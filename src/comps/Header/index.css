@@ -1,0 +1,36 @@
+:scope {
+  border-bottom: 1px solid rgb(203 213 225);
+  display: flex;
+  padding: 0 4rem;
+  align-items: center;
+
+  .first {
+    display: flex;
+    align-items: center;
+
+    .text {
+      font-weight: 700;
+      margin: 0 0.5rem;
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  .second {
+    flex: 1 1 0;
+    margin: 0 4rem;
+    padding-left: 1rem;
+    .input-container {
+      /* border flex items-center  w-1/2 p-2 rounded-lg dark:bg-slate-800 dark:border-none */
+      display: flex;
+      border: 1px solid var(--slate-300);
+      align-items: center;
+      width: 50%;
+      padding: 0.5rem;
+      border-radius: 1rem;
+    }
+  }
+
+  .third {
+  }
+}

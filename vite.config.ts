@@ -2,13 +2,13 @@ import { defineConfig } from "vite";
 import solid from "vite-plugin-solid";
 
 export default defineConfig({
-    plugins: [solid()],
-    server: {
-        host: "0.0.0.0",
+  plugins: [solid()],
+  server: {
+    host: "0.0.0.0",
+  },
+  resolve: {
+    alias: {
+      "@": new URL("./src", import.meta.url).pathname,
     },
-    resolve: {
-        alias: {
-            "@": new URL("./src", import.meta.url).pathname,
-        },
-    },
+  },
 });

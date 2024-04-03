@@ -1,10 +1,14 @@
-import { SvgCommand, SvgSearch } from "@/components/Svg";
-import Theme from "./Theme";
-
-import SolidIcon from "@/assets/solid.svg";
+import { SvgCommand, SvgSearch, SvgSolid } from "@/comps";
 import { createEffect } from "solid-js";
+import { BaseProps } from "@/types";
+import Theme from "./Theme";
+import light from "./index.css?raw";
+import dark from "./index.dark.css?raw";
+import { css } from "@/utils/css";
 
-export default function Header() {
+interface Props extends BaseProps {}
+
+export function Header(props: Props) {
   createEffect(() => {
     const focusFunc = (e: KeyboardEvent) => {
       if (e.key == "k" && (e.ctrlKey || e.metaKey)) {
@@ -17,7 +21,7 @@ export default function Header() {
       window.removeEventListener("keydown", focusFunc);
     };
   });
-  
+
   const links = [
     {
       path: "/demo",
@@ -30,14 +34,16 @@ export default function Header() {
   ];
 
   let refInput: HTMLInputElement | undefined;
+
   return (
-    <header class="border-b border-slate-300 sticky top-0 flex space-x-2 px-16 py-3 dark:border-slate-800">
-      <a class="flex items-center" href="/">
-        <img src={SolidIcon} alt="" class="w-6 h-6" />
-        <span class="font-bold mx-2 text-xl">七色琉璃花</span>
+    <header class={css(light, dark, props.class)()}>
+      <a class="first" href="/">
+        <SvgSolid />
+        <span class="text">七色琉璃花</span>
       </a>
-      <div class="pl-4 flex-1">
-        <div class="border flex items-center  w-1/2 p-2 rounded-lg dark:bg-slate-800 dark:border-none">
+
+      <div class="second">
+        <div class="input-container ">
           <SvgSearch class="w-5 mr-2 text-slate-500" />
           <input
             placeholder=" 输入关键字搜索…"
@@ -53,7 +59,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div class="flex items-center">
+      <div class="third flex items-center">
         <nav class="flex items-center mr-20 space-x-8">
           {links.map(({ path, name }) => (
             <a href={path}>{name}</a>
